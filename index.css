@@ -1,0 +1,27 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  width: 100vw;
+  min-width: 400px;
+  padding: 10px;
+}
+
+input[type=text] {
+  padding: 10px;
+  border: 3px solid #BDA3E8;
+}
+
+button {
+  background-color: #BDA3E8;
+  border: none;
+  padding: 10px 20px;
+  margin-top: 10px;
+  color: white;
+  font-weight: 900;
+  align-self: flex-start;
+}
