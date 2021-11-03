@@ -10,8 +10,13 @@ saveBtn.addEventListener("click", () => {
 })
 
 const renderLeads = () => {
+  let listItems = ""
   for(let i = 0; i < jobLeads.length; i++) {
-    ulEl.innerHTML += `<li><a target="_blank" href='${jobLeads[i]}'>${jobLeads[i]}</a></li>`
+    listItems += `
+      <li>
+        <a target="_blank" href='https://${jobLeads[i]}'>${jobLeads[i]}</a>
+      </li>`
     console.log(jobLeads[i])
   }
+  ulEl.innerHTML = listItems
 }
