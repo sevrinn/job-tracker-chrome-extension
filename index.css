@@ -21,12 +21,16 @@ input[type=text] {
 
 button {
   background-color: #BDA3E8;
-  border: none;
+  border: 1px solid #BDA3E8;
   padding: 10px 20px;
   margin-top: 10px;
   color: white;
   font-weight: 900;
   align-self: flex-start;
+}
+#delete-btn {
+  background-color: white;
+  color: #BDA3E8;
 }
 
 ul {
