@@ -1,13 +1,20 @@
 let jobLeads = []
-let saveBtn = document.getElementById("save-btn")
-let inputEl = document.getElementById("input-el")
-let ulEl = document.getElementById("ul-el")
-let leadsInLocalStorage = JSON.parse(localStorage.getItem("jobLeads"))
+const saveBtn = document.getElementById("save-btn")
+const inputEl = document.getElementById("input-el")
+const deleteBtn = document.getElementById("delete-btn")
+const ulEl = document.getElementById("ul-el")
+const leadsInLocalStorage = JSON.parse(localStorage.getItem("jobLeads"))
 
 if(leadsInLocalStorage) {
   jobLeads = leadsInLocalStorage
   renderLeads()
 }
+
+deleteBtn.addEventListener("dblclick", () => {
+  localStorage.clear()
+  jobLeads = []
+  renderLeads()
+})
 
 saveBtn.addEventListener("click", () => {
   jobLeads.push(inputEl.value)
