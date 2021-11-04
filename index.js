@@ -7,30 +7,30 @@ const leadsInLocalStorage = JSON.parse(localStorage.getItem("jobLeads"))
 
 if(leadsInLocalStorage) {
   jobLeads = leadsInLocalStorage
-  renderLeads()
+  render(jobLeads)
 }
 
 deleteBtn.addEventListener("dblclick", () => {
   localStorage.clear()
   jobLeads = []
-  renderLeads()
+  render(jobLeads)
 })
 
 saveBtn.addEventListener("click", () => {
   jobLeads.push(inputEl.value)
   inputEl.value = ""
   localStorage.setItem("jobLeads", JSON.stringify(jobLeads))
-  renderLeads()
+  render(jobLeads)
 })
 
-function renderLeads() {
+function render(leads) {
   let listItems = ""
-  for(let i = 0; i < jobLeads.length; i++) {
+  for(let i = 0; i < leads.length; i++) {
     listItems += `
       <li>
-        <a target="_blank" href='https://${jobLeads[i]}'>${jobLeads[i]}</a>
+        <a target="_blank" href='https://${leads[i]}'>${leads[i]}</a>
       </li>`
-    console.log(jobLeads[i])
+    console.log(leads[i])
   }
   ulEl.innerHTML = listItems
 }
