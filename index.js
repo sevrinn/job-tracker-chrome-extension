@@ -1,7 +1,10 @@
+
+
 let jobLeads = []
 const saveBtn = document.getElementById("save-btn")
 const inputEl = document.getElementById("input-el")
 const deleteBtn = document.getElementById("delete-btn")
+const tabBtn = document.getElementById("save-tab")
 const ulEl = document.getElementById("ul-el")
 const leadsInLocalStorage = JSON.parse(localStorage.getItem("jobLeads"))
 
@@ -10,6 +13,14 @@ if(leadsInLocalStorage) {
   render(jobLeads)
 }
 
+
+tabBtn.addEventListener("click", () => {
+  chrome.tabs.query({active: true, currentWindow: true}, (tabs) => {
+    jobLeads.push(tabs[0].url)
+    localStorage.setItem("jobLeads", JSON.stringify(jobLeads))
+    render(jobLeads)
+  })
+})
 deleteBtn.addEventListener("dblclick", () => {
   localStorage.clear()
   jobLeads = []
@@ -28,7 +39,7 @@ function render(leads) {
   for(let i = 0; i < leads.length; i++) {
     listItems += `
       <li>
-        <a target="_blank" href='https://${leads[i]}'>${leads[i]}</a>
+        <a target="_blank" href="${leads[i]}">${leads[i]}</a>
       </li>`
     console.log(leads[i])
   }
